@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -464,11 +464,11 @@ import { FormsModule } from '@angular/forms';
       .services-hero h1 {
         font-size: 2.5rem;
       }
-      
+
       .services-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .process-steps {
         grid-template-columns: 1fr;
       }
@@ -612,10 +612,11 @@ export class ServicesComponent implements OnInit {
     this.searchTerm = '';
     this.filteredServices = [...this.services];
   }
+  constructor(private router: Router) {}
 
   bookService(service: any) {
-    // يمكن إضافة منطق حجز الخدمة هنا
+
     console.log('Booking service:', service.title);
-    // يمكن توجيه المستخدم لصفحة الحجز مع تفاصيل الخدمة
+    this.router.navigate(['/patient']);
   }
 }

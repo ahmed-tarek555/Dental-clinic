@@ -2,7 +2,6 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-# Gmail SMTP settings
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 SMTP_EMAIL = "ahmeddad334@gmail.com"

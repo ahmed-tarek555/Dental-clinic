@@ -1,15 +1,11 @@
-from fastapi import APIRouter, Request, Form, Depends, HTTPException
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import RedirectResponse
+from fastapi import APIRouter, Form, Depends, HTTPException
 from sqlalchemy.orm import Session
 from routers.auth import verify_password
 from models import Admin, User, ContactMessage
-from typing import List
-from database import get_db, Base, engine
+from database import get_db
 
 
 router = APIRouter(prefix="/admin", tags=["admin"])
-templates = Jinja2Templates(directory="templates")
 
 def model_to_dict(obj):
     return {k: v for k, v in obj.__dict__.items() if k != "_sa_instance_state"}

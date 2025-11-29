@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Form, Depends, HTTPException
+from fastapi import APIRouter, Form, Depends
 from sqlalchemy.orm import Session
 import bcrypt
 from database import get_db

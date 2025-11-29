@@ -29,7 +29,7 @@ import { RouterModule } from '@angular/router';
               <h2>دكتور أحمد طلعت</h2>
               <h3>استشاري طب الأسنان وزراعة الأسنان</h3>
               <p>من أهم الشخصيات البارزة في مجال طب وزراعة الأسنان في مصر والشرق الأوسط، حيث قام بتأسيس وإدارة واحدة من أبرز وأكبر المراكز المتخصصة في زراعة وتجميل الأسنان بالشرق الأوسط.</p>
-              
+
               <div class="doctor-credentials">
                 <div class="credential">
                   <strong>التخصص:</strong> زراعة الأسنان وتجميل الأسنان
@@ -44,16 +44,10 @@ import { RouterModule } from '@angular/router';
                   <strong>اللغات:</strong> العربية، الإنجليزية، الفرنسية
                 </div>
               </div>
-
-              <div class="doctor-actions">
-                <a routerLink="/booking" class="btn-primary">احجز موعد</a>
-                <button class="btn-secondary">عرض السيرة الذاتية</button>
-              </div>
             </div>
           </div>
         </div>
       </section>
-
       <!-- Team Grid -->
       <section class="team-grid-section">
         <div class="container">
@@ -114,7 +108,6 @@ import { RouterModule } from '@angular/router';
             </div>
           </div>
           <div class="modal-footer">
-            <a routerLink="/booking" class="btn-primary">احجز موعد</a>
             <button class="btn-secondary" (click)="closeModal()">إغلاق</button>
           </div>
         </div>
@@ -430,12 +423,12 @@ import { RouterModule } from '@angular/router';
         gap: 2rem;
         text-align: center;
       }
-      
+
       .modal-header {
         flex-direction: column;
         text-align: center;
       }
-      
+
       .doctor-actions {
         justify-content: center;
       }
@@ -444,7 +437,7 @@ import { RouterModule } from '@angular/router';
 })
 export class TeamComponent implements OnInit {
   selectedDoctor: any = null;
-  
+
   teamMembers = [
     {
       name: "د. مصطفي المهدي ",

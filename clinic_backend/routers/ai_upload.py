@@ -1,4 +1,4 @@
-from fastapi import APIRouter, File, UploadFile, Request
+from fastapi import APIRouter, File, UploadFile
 import torch
 import cv2
 from ai.model import Classifier
@@ -6,10 +6,8 @@ from ai.ai_utils import device
 import os
 import uuid
 from fastapi.responses import FileResponse
-from fastapi.templating import Jinja2Templates
 
 router = APIRouter(prefix="/ai", tags=["AI Image Upload"])
-templates = Jinja2Templates(directory="templates")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARAMETERS_PATH = os.path.join(BASE_DIR, "parameters.pth")
