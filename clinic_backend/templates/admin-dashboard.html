@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Dashboard</h1>
+
+<button onclick="logout()">Logout</button>
+
+<h2>Appointments</h2>
+<table id="usersTable">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Reason</th>
+    </tr>
+</table>
+
+<h2>Contact Messages</h2>
+<table id="messagesTable">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+    </tr>
+</table>
+
+<script>
+if (!localStorage.getItem("admin_token")) {
+    window.location.href = "/admin/login-page";
+}
+
+async function loadDashboard() {
+    const res = await fetch("/admin/dashboard");
+    const data = await res.json();
+
+    const usersTable = document.getElementById("usersTable");
+    const messagesTable = document.getElementById("messagesTable");
+
+    data.users.forEach(u => {
+        let row = `
+        <tr>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
+            <td>${u.date}</td>
+            <td>${u.time}</td>
+            <td>${u.reason}</td>
+        </tr>`;
+        usersTable.innerHTML += row;
+    });
+
+    data.messages.forEach(m => {
+        let row = `
+        <tr>
+            <td>${m.name}</td>
+            <td>${m.email}</td>
+            <td>${m.message}</td>
+        </tr>`;
+        messagesTable.innerHTML += row;
+    });
+}
+
+function logout() {
+    localStorage.removeItem("admin_token");
+    window.location.href = "/admin/login-page";
+}
+
+loadDashboard();
+</script>
+
+</body>
+</html>

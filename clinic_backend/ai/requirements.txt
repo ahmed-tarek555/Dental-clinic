@@ -1,0 +1,10 @@
+python
+torch~=2.8.0+cu129
+torchvision~=0.23.0+cu129
+yaml
+json
+cv2
+pillow~=11.3.0
+opencv-python~=4.11.0.86
+fastapi~=0.116.1
+PyYAML~=6.0.2

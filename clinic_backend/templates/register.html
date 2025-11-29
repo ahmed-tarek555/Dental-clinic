@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 60px; }
+    form { display: inline-block; text-align: left; }
+    input { display: block; margin: 10px 0; width: 200px; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h2>Create an Account</h2>
+  <h3 id="details"></h3>
+  <form id="registerForm" onsubmit="register(event)">
+      <input name="name" placeholder="Full Name" required><br>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
+      <input type="date" name="date" required><br>
+      <input type="time" name="time" required><br>
+      <input name="reason" placeholder="Reason (optional)"><br>
+      <button type="submit">Register</button>
+  </form>
+
+<script>
+async function register(e) {
+    e.preventDefault();
+
+    const form = new FormData(document.getElementById("registerForm"));
+
+    const res = await fetch("/register", {
+        method: "POST",
+        body: form
+    });
+
+    if (!res.ok) {
+        const err = await res.json();
+        document.getElementById("details").innerText = err.detail;
+        return;
+    }
+
+    window.location.href = res.url;
+}
+</script>
+</body>
+</html>
