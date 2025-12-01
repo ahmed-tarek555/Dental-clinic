@@ -8,7 +8,7 @@ from ai.ai_utils import device, decode_preds, parameters_file, anchors, draw_obj
 threshold = 0.5
 
 model = Classifier()
-model.load_state_dict(torch.load(parameters_file))
+model.load_state_dict(torch.load(parameters_file, map_location=torch.device(device)))
 model = model.to(device)
 
 app = FastAPI()

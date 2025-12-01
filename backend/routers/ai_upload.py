@@ -14,7 +14,7 @@ PARAMETERS_PATH = os.path.join(BASE_DIR, "parameters.pth")
 threshold = 0.5
 
 model = Classifier()
-model.load_state_dict(torch.load(PARAMETERS_PATH))
+model.load_state_dict(torch.load(PARAMETERS_PATH, map_location=torch.device(device)))
 model = model.to(device)
 
 UPLOAD_DIR = "static/uploads"
