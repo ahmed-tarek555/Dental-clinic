@@ -2,7 +2,7 @@ import sys
 import cv2
 from fastapi import FastAPI, File, UploadFile
 import torch
-from ai.model import Classifier
+from model import Classifier
 from ai.ai_utils import device, decode_preds, parameters_file, anchors, draw_objs
 
 threshold = 0.5

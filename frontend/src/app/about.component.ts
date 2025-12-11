@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
       <section class="about-hero">
         <div class="container">
           <h1>من نحن</h1>
-          <p>عيادة الأسنان المتطورة - رؤيتنا ورسالتنا</p>
+          <p>عيادة الهلال للاسنان - رؤيتنا ورسالتنا</p>
         </div>
       </section>
 
@@ -21,15 +21,15 @@ import { RouterModule } from '@angular/router';
         <div class="container">
           <div class="content-grid">
             <div class="text-content">
-              <h2>مرحباً بكم في عيادة الأسنان المتطورة</h2>
+              <h2>مرحباً بكم في عيادة الهلال للاسنان</h2>
               <p>بخبرة أكثر من 10 أعوام وأمهر أطباء الأسنان في المنطقة، نتربع الآن على عرش مجال طب الأسنان وتجميل الابتسامات بأحدث التقنيات العالمية. لذلك أصبحنا الاختيار الأول للعائلات والمرضى في المنطقة.</p>
-              
+
               <h3>رؤيتنا</h3>
               <p>أن نكون الرائدين في مجال طب الأسنان وتجميل الابتسامات، وأن نقدم أفضل الخدمات الطبية بأعلى معايير الجودة والرعاية.</p>
-              
+
               <h3>رسالتنا</h3>
               <p>نلتزم بتقديم رعاية طبية متميزة وشاملة لجميع المرضى، باستخدام أحدث التقنيات والطرق العلاجية، مع التركيز على الراحة والرضا التام للمريض.</p>
-              
+
               <h3>قيمنا</h3>
               <ul>
                 <li><strong>الجودة:</strong> نلتزم بأعلى معايير الجودة في جميع خدماتنا</li>
@@ -39,7 +39,7 @@ import { RouterModule } from '@angular/router';
                 <li><strong>الشفافية:</strong> نقدم معلومات واضحة ومفهومة</li>
               </ul>
             </div>
-            
+
             <div class="image-content">
               <div class="image-placeholder">
                 <span>صورة فريق العمل</span>
@@ -288,12 +288,12 @@ import { RouterModule } from '@angular/router';
       .about-hero h1 {
         font-size: 2.5rem;
       }
-      
+
       .content-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
       }
-      
+
       .team-grid {
         grid-template-columns: 1fr;
       }
