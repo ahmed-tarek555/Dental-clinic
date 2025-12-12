@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
         <h2 class="card-title">رفع ومعالجة صورة الأشعة</h2>
 
         <div class="row">
-          <label for="file">(اشعة) اختر صورة الأسنان</label>
+          <label for="file">اختر صورة الاسنان (اشعة)</label>
           <input id="file" type="file" accept="image/*" (change)="onFileChange($event)" />
         </div>
 
@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <button type="submit" [disabled]="!file || isLoading" class="btn primary-btn">
-          إرسال إلى المعالجة
+          إرسال
         </button>
       </form>
 
