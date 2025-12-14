@@ -31,8 +31,8 @@ import { FormsModule } from '@angular/forms';
       <section class="faq-categories">
         <div class="container">
           <div class="category-tabs">
-            <button 
-              *ngFor="let category of categories" 
+            <button
+              *ngFor="let category of categories"
               (click)="selectCategory(category)"
               [class.active]="selectedCategory === category"
               class="category-tab">
@@ -77,8 +77,8 @@ import { FormsModule } from '@angular/forms';
             <h2>لم تجد إجابة لسؤالك؟</h2>
             <p>فريقنا الطبي المتخصص جاهز للإجابة على جميع استفساراتك</p>
             <div class="contact-options">
-              <a routerLink="/booking" class="btn-primary">احجز استشارة</a>
-              <a href="tel:+201507556382" class="btn-secondary">اتصل بنا</a>
+              <a routerLink="/patient" class="btn-primary">احجز استشارة</a>
+              <a routerLink="/contact" class="btn-secondary">اتصل بنا</a>
             </div>
           </div>
         </div>
@@ -346,7 +346,7 @@ import { FormsModule } from '@angular/forms';
         flex-direction: column;
         align-items: center;
       }
-      
+
       .contact-options {
         flex-direction: column;
         align-items: center;
@@ -358,7 +358,7 @@ export class FAQComponent implements OnInit {
   searchTerm = '';
   selectedCategory = 'الكل';
   filteredFAQs: any[] = [];
-  
+
   categories = ['الكل', 'زراعة الأسنان', 'تقويم الأسنان', 'تجميل الأسنان', 'علاج العصب', 'طب أسنان الأطفال', 'الوقاية'];
 
   faqs = [
@@ -494,13 +494,13 @@ export class FAQComponent implements OnInit {
 
   filterFAQs() {
     this.filteredFAQs = this.faqs.filter(faq => {
-      const matchesSearch = !this.searchTerm || 
+      const matchesSearch = !this.searchTerm ||
         faq.question.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         faq.answer.toLowerCase().includes(this.searchTerm.toLowerCase());
-      
-      const matchesCategory = this.selectedCategory === 'الكل' || 
+
+      const matchesCategory = this.selectedCategory === 'الكل' ||
         faq.category === this.selectedCategory;
-      
+
       return matchesSearch && matchesCategory;
     });
   }

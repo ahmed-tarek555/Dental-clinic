@@ -98,7 +98,7 @@ import { FormsModule } from '@angular/forms';
               <button class="share-btn">مشاركة</button>
               <button class="print-btn">طباعة</button>
             </div>
-            <a routerLink="/booking" class="btn-primary">احجز استشارة</a>
+            <a routerLink="/patient" class="btn-primary">احجز استشارة</a>
           </div>
         </div>
       </div>
@@ -429,11 +429,11 @@ import { FormsModule } from '@angular/forms';
         flex-direction: column;
         gap: 1rem;
       }
-      
+
       .articles-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .article-footer {
         flex-direction: column;
         gap: 1rem;
@@ -599,13 +599,13 @@ export class ArticlesComponent implements OnInit {
 
   filterArticles() {
     this.filteredArticles = this.articles.filter(article => {
-      const matchesSearch = !this.searchTerm || 
+      const matchesSearch = !this.searchTerm ||
         article.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         article.excerpt.toLowerCase().includes(this.searchTerm.toLowerCase());
-      
-      const matchesCategory = !this.selectedCategory || 
+
+      const matchesCategory = !this.selectedCategory ||
         article.category === this.selectedCategory;
-      
+
       return matchesSearch && matchesCategory;
     });
   }
