@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
   template: `
 <div class="page-layout">
 
-  <!-- LEFT SIDE -->
   <div class="left-side">
     <div class="card form-card">
 
@@ -79,7 +78,29 @@ import { FormsModule } from '@angular/forms';
         <h4>التهاب / عدوى (Infection)</h4>
         <p>وجود التهاب في اللثة أو العظم أو حول الجذر.</p>
       </div>
+    </div>
+    <div class="card chat-card">
+      <h2 class="card-title">مساعد صحة الأسنان</h2>
 
+      <div class="chat-box">
+        <div *ngFor="let msg of chatMessages"
+             class="chat-message"
+             [class.user]="msg.role === 'user'"
+             [class.ai]="msg.role === 'assistant'">
+          <b>{{ msg.role === 'user' ? 'أنت' : 'المساعد' }}:</b>
+          <span>{{ msg.content }}</span>
+        </div>
+      </div>
+
+      <div class="chat-input">
+        <input
+          type="text"
+          placeholder="اسأل عن حالة الأسنان..."
+          [(ngModel)]="chatInput"
+          (keydown.enter)="sendChat()"
+        />
+        <button (click)="sendChat()">إرسال</button>
+      </div>
     </div>
   </div>
 
@@ -181,6 +202,13 @@ input {
   background: #00796b;
 }
 
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 50px; /* <-- space from the screen edge */
+}
+
 /* --- Center the result area --- */
 .summary {
   margin-top: 20px;
@@ -210,6 +238,70 @@ input {
   font-weight: 600;
 }
 
+/* --- Chat Card --- */
+.chat-card {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+}
+
+/* Messages container */
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  background: #f7f9fc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Individual messages */
+.chat-message {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.chat-message.user {
+  background: #e3f2fd;
+  text-align: right;
+}
+
+.chat-message.ai {
+  background: #e8f5e9;
+  text-align: left;
+}
+
+/* Input area */
+.chat-input {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.chat-input button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #1565c0;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background: #0d47a1;
+}
+
+
 
   `]
 })
@@ -222,6 +314,11 @@ export class AiComponent {
   isLoading = false;
   errorMessage = '';
   email = '';
+
+  chatMessages: { role: 'user' | 'assistant'; content: string }[] = [];
+  chatInput = '';
+  private chatApiUrl = 'http://localhost:8000/ai_chat';
+
 
   private apiUrl = 'http://localhost:8000/ai/process_image';
 
@@ -298,4 +395,41 @@ export class AiComponent {
     this.errorMessage = '';
     this.isLoading = false;
   }
+
+  sendChat() {
+  const text = this.chatInput.trim();
+  if (!text) return;
+
+  this.chatMessages.push({ role: 'user', content: text });
+  this.chatInput = '';
+
+  this.http.post<any>(
+    this.chatApiUrl,
+    text,
+    { headers: { 'Content-Type': 'text/plain' } }
+  ).subscribe({
+    next: (res) => {
+      this.chatMessages.push({
+        role: 'assistant',
+        content: res.reply
+      });
+    },
+    error: (err) => {
+      console.error(err);
+      this.chatMessages.push({
+        role: 'assistant',
+        content: 'حدث خطأ أثناء الاتصال بالمساعد'
+        });
+      }
+    });
+  }
+  ngOnInit() {
+    this.http.post('http://localhost:8000/ai_chat/reset', {}, { observe: 'response' })
+      .subscribe({
+        next: (res) => console.log('AI context reset', res.status),
+        error: (err) => console.error('Failed to reset AI context', err)
+      });
+  }
+
+
 }

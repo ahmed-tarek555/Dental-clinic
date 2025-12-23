@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine
 import models
-from routers import ai_upload, auth, contact_us, admin_login
+from routers import ai_upload, auth, contact_us, admin_login, ai_chat
 
 app = FastAPI(title="Dental Clinic")
 
@@ -15,6 +15,7 @@ app.include_router(ai_upload.router)
 app.include_router(auth.router)
 app.include_router(contact_us.router)
 app.include_router(admin_login.router)
+app.include_router(ai_chat.router)
 
 app.add_middleware(
     CORSMiddleware,
