@@ -80,14 +80,14 @@ import { FormsModule } from '@angular/forms';
       </div>
     </div>
     <div class="card chat-card">
-      <h2 class="card-title">مساعد صحة الأسنان</h2>
+      <h2 class="card-title">AI assistant</h2>
 
       <div class="chat-box">
         <div *ngFor="let msg of chatMessages"
              class="chat-message"
              [class.user]="msg.role === 'user'"
              [class.ai]="msg.role === 'assistant'">
-          <b>{{ msg.role === 'user' ? 'أنت' : 'المساعد' }}:</b>
+          <b>{{ msg.role === 'user' ? 'You' : 'AI' }}:</b>
           <span>{{ msg.content }}</span>
         </div>
       </div>
