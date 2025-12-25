@@ -267,7 +267,7 @@ input {
 
 .chat-message.user {
   background: #e3f2fd;
-  text-align: right;
+  text-align: left;
 }
 
 .chat-message.ai {
