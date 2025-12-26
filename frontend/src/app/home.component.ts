@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
         <p>بخبرة أكثر من 10 أعوام وأمهر أطباء الأسنان، نقدم لك أفضل الخدمات الطبية بأحدث التقنيات العالمية</p>
         <div class="hero-buttons">
           <a routerLink="/ai" class="btn-primary">تقنية الذكاء الاصطناعي</a>
-          <button (click)="scrollToSection('why-choose-us')" class="btn-secondary">لماذا تختارنا؟</button>
+          <a routerLink="/patient" class="btn-secondary">حجز موعد</a>
         </div>
       </div>
     </section>
