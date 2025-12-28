@@ -1,8 +1,13 @@
 <nav class="main-nav">
   <div class="nav-container">
+
     <div class="nav-logo">
-      <a routerLink="/home">Al Helal</a>
+      <a routerLink="/home" class="logo-link">
+        <img src="assets/logo.png" alt="Al Helal Logo" class="logo-img" />
+        <span>Al Helal</span>
+      </a>
     </div>
+
     <div class="nav-links">
       <a routerLink="/home" routerLinkActive="active">الرئيسية</a>
       <a routerLink="/about" routerLinkActive="active">من نحن</a>
@@ -13,6 +18,8 @@
       <a routerLink="/contact" routerLinkActive="active">تواصل معنا</a>
       <a routerLink="/patient" routerLinkActive="active">حجز موعد</a>
     </div>
+
   </div>
 </nav>
-<router-outlet />
+
+<router-outlet></router-outlet>
