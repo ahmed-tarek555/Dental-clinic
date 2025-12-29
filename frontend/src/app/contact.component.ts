@@ -70,18 +70,13 @@ interface ApiResponse {
         <section class="doctor-message-section">
           <div class="doctor-message-wrapper">
             <div class="doctor-info">
-              <div class="doctor-avatar">
-                <span>👨‍⚕️</span>
-              </div>
               <div class="doctor-details">
-                <h2>راسل الدكتور مباشرة</h2>
-                <p>تواصل مع الدكتور للاستشارات الطبية والمتابعة</p>
+                <h1>راسلنا</h1>
               </div>
             </div>
 
             <div class="message-options">
-              <div class="message-option" (click)="selectMessageType('consultation')"
-                   [class.active]="selectedMessageType === 'consultation'">
+              <div class="message-option" >
                 <div class="option-icon">🩺</div>
                 <div class="option-content">
                   <h4>استشارة طبية</h4>
@@ -89,8 +84,7 @@ interface ApiResponse {
                 </div>
               </div>
 
-              <div class="message-option" (click)="selectMessageType('followup')"
-                   [class.active]="selectedMessageType === 'followup'">
+              <div class="message-option" >
                 <div class="option-icon">📋</div>
                 <div class="option-content">
                   <h4>متابعة علاج</h4>
@@ -98,8 +92,7 @@ interface ApiResponse {
                 </div>
               </div>
 
-              <div class="message-option" (click)="selectMessageType('report')"
-                   [class.active]="selectedMessageType === 'report'">
+              <div class="message-option" >
                 <div class="option-icon">📄</div>
                 <div class="option-content">
                   <h4>إرسال تقرير</h4>
@@ -107,8 +100,7 @@ interface ApiResponse {
                 </div>
               </div>
 
-              <div class="message-option" (click)="selectMessageType('urgent')"
-                   [class.active]="selectedMessageType === 'urgent'">
+              <div class="message-option" >
                 <div class="option-icon">⚡</div>
                 <div class="option-content">
                   <h4>استفسار عاجل</h4>
@@ -513,7 +505,6 @@ interface ApiResponse {
       border: 2px solid transparent;
       border-radius: 16px;
       padding: 1.5rem;
-      cursor: pointer;
       transition: all 0.3s ease;
       text-align: center;
     }
