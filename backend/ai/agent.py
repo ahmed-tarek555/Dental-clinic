@@ -2,7 +2,7 @@ import requests
 
 class ChatModel:
     def __init__(self, instruction):
-        self.model = "http://host.docker.internal:11434/api/chat"
+        self.model = "http://host.docker.internal:11434/api/chat"   #"http://localhost:11434/api/chat"
         self.context =[
         {'role': 'system', 'content': f'{instruction}'},
         ]
